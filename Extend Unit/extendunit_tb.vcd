@@ -1,0 +1,45 @@
+$date
+	Wed Oct 19 00:42:38 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module extendunit_tb $end
+$var wire 32 ! immext [31:0] $end
+$var reg 2 " immsrc [1:0] $end
+$var reg 25 # instr [31:7] $end
+$scope module dut $end
+$var wire 2 $ immsrc [1:0] $end
+$var wire 25 % instr [31:7] $end
+$var reg 32 & immext [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx &
+b1101010100110011010011111 %
+bx $
+b1101010100110011010011111 #
+bx "
+bx !
+$end
+#10
+b11111111111111111111110101010011 !
+b11111111111111111111110101010011 &
+b0 "
+b0 $
+#20
+b11111111111111111111110101011111 !
+b11111111111111111111110101011111 &
+b1 "
+b1 $
+#30
+b11111111111111111111110101011110 !
+b11111111111111111111110101011110 &
+b10 "
+b10 $
+#40
