@@ -16,11 +16,12 @@ $dumpvars(0, ALU_decoder_tb);
 ALUOp = 00;
 
 #10 ALUOp = 01;
-#10 funct3 = 000; funct7b5 = 0; opb5 = 0;
-#10 funct7b5 = 1; opb5 = 1;
-#10 funct3 = 010;
-#10 funct3 = 110;
-#10 funct3 = 111;
+
+#10 ALUOp = 10; funct3 = 3'b010;
+#10 funct3 = 3'b110;
+#10 funct3 = 3'b111;
+#10 funct3 = 3'b000; funct7b5 = 1; opb5 = 1;
+#10 funct7b5 = 0; opb5 = 0;
 
 $finish; // This system tasks ends the simulation
 end
