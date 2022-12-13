@@ -1,7 +1,7 @@
 `timescale 1ps/1ps
 `include "extendunit.sv"
 module extendunit_tb;
-logic [31:7]instr;
+logic [31:0]instr;
 logic [1:0]  immsrc;
 logic [31:0] immext;
 extendunit dut (instr, immsrc, immext);
