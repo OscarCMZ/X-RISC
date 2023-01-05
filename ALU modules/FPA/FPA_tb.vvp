@@ -1,0 +1,225 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "D:\iverilog\lib\ivl\system.vpi";
+:vpi_module "D:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "D:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "D:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "D:\iverilog\lib\ivl\va_math.vpi";
+:vpi_module "D:\iverilog\lib\ivl\v2009.vpi";
+S_000001576ea73540 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_000001576ea736d0 .scope module, "FPA_tb" "FPA_tb" 3 3;
+ .timescale -12 -12;
+v000001576eae42d0_0 .var "a", 31 0;
+v000001576eae4f50_0 .var "b", 31 0;
+v000001576eae5130_0 .net "s", 31 0, L_000001576eae4ff0;  1 drivers
+S_000001576ea7a8e0 .scope module, "dut" "FPA" 3 8, 4 1 0, S_000001576ea736d0;
+ .timescale -12 -12;
+    .port_info 0 /INPUT 32 "a";
+    .port_info 1 /INPUT 32 "b";
+    .port_info 2 /OUTPUT 32 "s";
+v000001576eae2570_0 .net *"_ivl_15", 7 0, L_000001576eae5450;  1 drivers
+L_000001576ef000d0 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
+v000001576eae2cf0_0 .net/2u *"_ivl_16", 0 0, L_000001576ef000d0;  1 drivers
+v000001576eae1df0_0 .net *"_ivl_19", 22 0, L_000001576eae4730;  1 drivers
+v000001576eae2f70_0 .net *"_ivl_20", 31 0, L_000001576eae44b0;  1 drivers
+L_000001576ef00118 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v000001576eae10d0_0 .net/2u *"_ivl_22", 0 0, L_000001576ef00118;  1 drivers
+v000001576eae2250_0 .net *"_ivl_4", 7 0, L_000001576eae53b0;  1 drivers
+L_000001576ef00088 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
+v000001576eae17b0_0 .net/2u *"_ivl_5", 0 0, L_000001576ef00088;  1 drivers
+v000001576eae1490_0 .net *"_ivl_8", 22 0, L_000001576eae4870;  1 drivers
+v000001576eae22f0_0 .net *"_ivl_9", 31 0, L_000001576eae4910;  1 drivers
+v000001576eae2610_0 .net "a", 31 0, v000001576eae42d0_0;  1 drivers
+v000001576eae1a30_0 .net "alessb", 0 0, L_000001576eae5590;  1 drivers
+v000001576eae2bb0_0 .net "b", 31 0, v000001576eae4f50_0;  1 drivers
+v000001576eae26b0_0 .net "exp", 7 0, L_000001576eae49b0;  1 drivers
+v000001576eae1990_0 .net "exp_pre", 7 0, v000001576eae1350_0;  1 drivers
+v000001576eae2c50_0 .net "expa", 7 0, L_000001576eae5310;  1 drivers
+v000001576eae1670_0 .net "expb", 7 0, L_000001576eae4230;  1 drivers
+v000001576eae2d90_0 .net "fract", 22 0, L_000001576eae4eb0;  1 drivers
+v000001576eae2e30_0 .net "manta", 23 0, L_000001576eae4cd0;  1 drivers
+v000001576eae1170_0 .net "mantb", 23 0, L_000001576eae4370;  1 drivers
+v000001576eae1210_0 .net "s", 31 0, L_000001576eae4ff0;  alias, 1 drivers
+v000001576eae5db0_0 .net "shamt", 7 0, v000001576eae1d50_0;  1 drivers
+v000001576eae5270_0 .net "shmant", 23 0, v000001576eae29d0_0;  1 drivers
+L_000001576eae5310 .part L_000001576eae4910, 24, 8;
+L_000001576eae4cd0 .part L_000001576eae4910, 0, 24;
+L_000001576eae53b0 .part v000001576eae42d0_0, 23, 8;
+L_000001576eae4870 .part v000001576eae42d0_0, 0, 23;
+L_000001576eae4910 .concat [ 23 1 8 0], L_000001576eae4870, L_000001576ef00088, L_000001576eae53b0;
+L_000001576eae4230 .part L_000001576eae44b0, 24, 8;
+L_000001576eae4370 .part L_000001576eae44b0, 0, 24;
+L_000001576eae5450 .part v000001576eae4f50_0, 23, 8;
+L_000001576eae4730 .part v000001576eae4f50_0, 0, 23;
+L_000001576eae44b0 .concat [ 23 1 8 0], L_000001576eae4730, L_000001576ef000d0, L_000001576eae5450;
+L_000001576eae4ff0 .concat [ 23 8 1 0], L_000001576eae4eb0, L_000001576eae49b0, L_000001576ef00118;
+S_000001576ea7aa70 .scope module, "addmant1" "addmant" 4 14, 4 50 0, S_000001576ea7a8e0;
+ .timescale -12 -12;
+    .port_info 0 /INPUT 1 "alessb";
+    .port_info 1 /INPUT 24 "manta";
+    .port_info 2 /INPUT 24 "mantb";
+    .port_info 3 /INPUT 24 "shmant";
+    .port_info 4 /INPUT 8 "exp_pre";
+    .port_info 5 /OUTPUT 23 "fract";
+    .port_info 6 /OUTPUT 8 "exp";
+v000001576ea67520_0 .net *"_ivl_13", 0 0, L_000001576eae5090;  1 drivers
+v000001576ea66620_0 .net *"_ivl_15", 22 0, L_000001576eae56d0;  1 drivers
+v000001576ea66760_0 .net *"_ivl_17", 22 0, L_000001576eae4b90;  1 drivers
+v000001576ea66e40_0 .net *"_ivl_2", 24 0, L_000001576eae4410;  1 drivers
+v000001576eae27f0_0 .net *"_ivl_21", 0 0, L_000001576eae4190;  1 drivers
+L_000001576ef001f0 .functor BUFT 1, C4<00000001>, C4<0>, C4<0>, C4<0>;
+v000001576eae2750_0 .net/2u *"_ivl_22", 7 0, L_000001576ef001f0;  1 drivers
+v000001576eae12b0_0 .net *"_ivl_24", 7 0, L_000001576eae5f90;  1 drivers
+L_000001576ef00160 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v000001576eae15d0_0 .net *"_ivl_5", 0 0, L_000001576ef00160;  1 drivers
+v000001576eae1530_0 .net *"_ivl_6", 24 0, L_000001576eae54f0;  1 drivers
+L_000001576ef001a8 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v000001576eae1b70_0 .net *"_ivl_9", 0 0, L_000001576ef001a8;  1 drivers
+v000001576eae18f0_0 .net "addresult", 24 0, L_000001576eae4d70;  1 drivers
+v000001576eae1c10_0 .net "addval", 23 0, L_000001576eae59f0;  1 drivers
+v000001576eae2b10_0 .net "alessb", 0 0, L_000001576eae5590;  alias, 1 drivers
+v000001576eae1e90_0 .net "exp", 7 0, L_000001576eae49b0;  alias, 1 drivers
+v000001576eae1f30_0 .net "exp_pre", 7 0, v000001576eae1350_0;  alias, 1 drivers
+v000001576eae1fd0_0 .net "fract", 22 0, L_000001576eae4eb0;  alias, 1 drivers
+v000001576eae2a70_0 .net "manta", 23 0, L_000001576eae4cd0;  alias, 1 drivers
+v000001576eae1ad0_0 .net "mantb", 23 0, L_000001576eae4370;  alias, 1 drivers
+v000001576eae24d0_0 .net "shmant", 23 0, v000001576eae29d0_0;  alias, 1 drivers
+L_000001576eae59f0 .functor MUXZ 24, L_000001576eae4cd0, L_000001576eae4370, L_000001576eae5590, C4<>;
+L_000001576eae4410 .concat [ 24 1 0 0], v000001576eae29d0_0, L_000001576ef00160;
+L_000001576eae54f0 .concat [ 24 1 0 0], L_000001576eae59f0, L_000001576ef001a8;
+L_000001576eae4d70 .arith/sum 25, L_000001576eae4410, L_000001576eae54f0;
+L_000001576eae5090 .part L_000001576eae4d70, 24, 1;
+L_000001576eae56d0 .part L_000001576eae4d70, 1, 23;
+L_000001576eae4b90 .part L_000001576eae4d70, 0, 23;
+L_000001576eae4eb0 .functor MUXZ 23, L_000001576eae4b90, L_000001576eae56d0, L_000001576eae5090, C4<>;
+L_000001576eae4190 .part L_000001576eae4d70, 24, 1;
+L_000001576eae5f90 .arith/sum 8, v000001576eae1350_0, L_000001576ef001f0;
+L_000001576eae49b0 .functor MUXZ 8, v000001576eae1350_0, L_000001576eae5f90, L_000001576eae4190, C4<>;
+S_000001576ea7ac00 .scope module, "expcomp1" "expcomp" 4 10, 4 18 0, S_000001576ea7a8e0;
+ .timescale -12 -12;
+    .port_info 0 /INPUT 8 "expa";
+    .port_info 1 /INPUT 8 "expb";
+    .port_info 2 /OUTPUT 1 "alessb";
+    .port_info 3 /OUTPUT 8 "exp";
+    .port_info 4 /OUTPUT 8 "shamt";
+v000001576eae1cb0_0 .net "alessb", 0 0, L_000001576eae5590;  alias, 1 drivers
+v000001576eae2070_0 .net "aminusb", 7 0, L_000001576eae5b30;  1 drivers
+v000001576eae21b0_0 .net "bminusa", 7 0, L_000001576eae5630;  1 drivers
+v000001576eae1350_0 .var "exp", 7 0;
+v000001576eae13f0_0 .net "expa", 7 0, L_000001576eae5310;  alias, 1 drivers
+v000001576eae2110_0 .net "expb", 7 0, L_000001576eae4230;  alias, 1 drivers
+v000001576eae1d50_0 .var "shamt", 7 0;
+E_000001576ea72bc0/0 .event anyedge, v000001576eae2b10_0, v000001576eae2110_0, v000001576eae21b0_0, v000001576eae13f0_0;
+E_000001576ea72bc0/1 .event anyedge, v000001576eae2070_0;
+E_000001576ea72bc0 .event/or E_000001576ea72bc0/0, E_000001576ea72bc0/1;
+L_000001576eae5b30 .arith/sub 8, L_000001576eae5310, L_000001576eae4230;
+L_000001576eae5630 .arith/sub 8, L_000001576eae4230, L_000001576eae5310;
+L_000001576eae5590 .part L_000001576eae5b30, 7, 1;
+S_000001576ea7e0b0 .scope module, "shiftmant1" "shiftmant" 4 12, 4 36 0, S_000001576ea7a8e0;
+ .timescale -12 -12;
+    .port_info 0 /INPUT 1 "alessb";
+    .port_info 1 /INPUT 24 "manta";
+    .port_info 2 /INPUT 24 "mantb";
+    .port_info 3 /INPUT 8 "shamt";
+    .port_info 4 /OUTPUT 24 "shmant";
+v000001576eae2930_0 .net *"_ivl_0", 23 0, L_000001576eae5950;  1 drivers
+v000001576eae1710_0 .net *"_ivl_2", 23 0, L_000001576eae5e50;  1 drivers
+v000001576eae2890_0 .net "alessb", 0 0, L_000001576eae5590;  alias, 1 drivers
+v000001576eae2430_0 .net "manta", 23 0, L_000001576eae4cd0;  alias, 1 drivers
+v000001576eae2390_0 .net "mantb", 23 0, L_000001576eae4370;  alias, 1 drivers
+v000001576eae1850_0 .net "shamt", 7 0, v000001576eae1d50_0;  alias, 1 drivers
+v000001576eae2ed0_0 .net "shiftedval", 23 0, L_000001576eae5ef0;  1 drivers
+v000001576eae29d0_0 .var "shmant", 23 0;
+E_000001576ea72740 .event anyedge, v000001576eae1d50_0, v000001576eae2ed0_0;
+L_000001576eae5950 .shift/r 24, L_000001576eae4cd0, v000001576eae1d50_0;
+L_000001576eae5e50 .shift/r 24, L_000001576eae4370, v000001576eae1d50_0;
+L_000001576eae5ef0 .functor MUXZ 24, L_000001576eae5e50, L_000001576eae5950, L_000001576eae5590, C4<>;
+    .scope S_000001576ea7ac00;
+T_0 ;
+Ewait_0 .event/or E_000001576ea72bc0, E_0x0;
+    %wait Ewait_0;
+    %load/vec4 v000001576eae1cb0_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.0, 8;
+    %load/vec4 v000001576eae2110_0;
+    %store/vec4 v000001576eae1350_0, 0, 8;
+    %load/vec4 v000001576eae21b0_0;
+    %store/vec4 v000001576eae1d50_0, 0, 8;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/vec4 v000001576eae13f0_0;
+    %store/vec4 v000001576eae1350_0, 0, 8;
+    %load/vec4 v000001576eae2070_0;
+    %store/vec4 v000001576eae1d50_0, 0, 8;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_000001576ea7e0b0;
+T_1 ;
+    %wait E_000001576ea72740;
+    %load/vec4 v000001576eae1850_0;
+    %parti/s 1, 7, 4;
+    %load/vec4 v000001576eae1850_0;
+    %parti/s 1, 6, 4;
+    %or;
+    %load/vec4 v000001576eae1850_0;
+    %parti/s 1, 5, 4;
+    %or;
+    %load/vec4 v000001576eae1850_0;
+    %parti/s 1, 4, 4;
+    %load/vec4 v000001576eae1850_0;
+    %parti/s 1, 3, 3;
+    %and;
+    %or;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_1.0, 8;
+    %pushi/vec4 0, 0, 24;
+    %store/vec4 v000001576eae29d0_0, 0, 24;
+    %jmp T_1.1;
+T_1.0 ;
+    %load/vec4 v000001576eae2ed0_0;
+    %store/vec4 v000001576eae29d0_0, 0, 24;
+T_1.1 ;
+    %jmp T_1;
+    .thread T_1, $push;
+    .scope S_000001576ea736d0;
+T_2 ;
+    %vpi_call/w 3 12 "$dumpfile", "FPA_tb.vcd" {0 0 0};
+    %vpi_call/w 3 13 "$dumpvars", 32'sb00000000000000000000000000000000, S_000001576ea736d0 {0 0 0};
+    %pushi/vec4 1, 0, 32;
+    %store/vec4 v000001576eae42d0_0, 0, 32;
+    %pushi/vec4 1, 0, 32;
+    %store/vec4 v000001576eae4f50_0, 0, 32;
+    %delay 20, 0;
+    %pushi/vec4 1, 0, 32;
+    %store/vec4 v000001576eae42d0_0, 0, 32;
+    %delay 10, 0;
+    %pushi/vec4 3, 0, 32;
+    %store/vec4 v000001576eae42d0_0, 0, 32;
+    %delay 10, 0;
+    %pushi/vec4 3, 0, 32;
+    %store/vec4 v000001576eae4f50_0, 0, 32;
+    %delay 10, 0;
+    %pushi/vec4 5, 0, 32;
+    %store/vec4 v000001576eae42d0_0, 0, 32;
+    %delay 10, 0;
+    %pushi/vec4 5, 0, 32;
+    %store/vec4 v000001576eae4f50_0, 0, 32;
+    %vpi_call/w 3 25 "$finish" {0 0 0};
+    %end;
+    .thread T_2;
+    .scope S_000001576ea736d0;
+T_3 ;
+    %vpi_call/w 3 28 "$monitor", "t = %3d, a = %b, b = %b, s = %b", $time, v000001576eae42d0_0, v000001576eae4f50_0, v000001576eae5130_0 {0 0 0};
+    %end;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "FPA_tb.sv";
+    "./FPA.sv";
