@@ -120,7 +120,7 @@ module datapath(input  logic        clk,reset,
                 output logic [31:0] ALUResult, WriteData,
                 input  logic [31:0] ReadData);
     logic [31:0] PCNext, PCPlus4, PCTarget;
-    logic [31:0] ImmExt,
+    logic [31:0] ImmExt;
     logic [31:0] SrcA, SrcB;
     logic [31:0] Result;
 
@@ -228,7 +228,7 @@ module mux3 #(parameter WIDTH = 8)
 assign y = s[1] ? d2 : (s[0] ? d1 : d0);
 endmodule
 
-module mux3 #(parameter WIDTH = 8)
+module mux2 #(parameter WIDTH = 8)
             (input logic [WIDTH-1:0] d0, d1, 
             input logic              s,
             output logic [WIDTH-1:0] y);
@@ -258,12 +258,12 @@ module imem(input  [31:0] a,
 
   initial
     begin
-      $readmemh("riscvtest.txt",RAM);
+      $readmemh("riscvtest1.txt",RAM);
     end
 
   assign rd = RAM[a]; // word aligned
 endmodule
 
-
+module regfile
    
 

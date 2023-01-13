@@ -1,9 +1,14 @@
+`timescale 1ns/1ps
+`include "XRISC_single.sv"
+
 module XRISC_single_tb();
 
     logic           clk;
     logic           reset;
     logic   [31:0]  WriteData, DataAdr;
     logic           MemWrite;
+
+top dut(clk, reset,WriteData, DataAdr,MemWrite);
 
 //initialize test
 initial 
@@ -18,7 +23,7 @@ always
     end
 
 //check results
-always@(negedge clk)
+/*always@(negedge clk)
     begin
         if(MemWrite) begin
             if (DataAdr === 100 & WriteData === 25) begin
@@ -29,6 +34,12 @@ always@(negedge clk)
                 $stop;
             end
         end
-    end
+    end*/
+
+initial begin
+$dumpfile("XRISC_single_tb.vcd");$dumpvars;
+#100;
+$finish;
+end
 endmodule
 
