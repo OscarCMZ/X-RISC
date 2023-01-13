@@ -237,9 +237,9 @@ assign y = s ? d1 : d0;
 endmodule
 
 //data memory
-module dmem(input         clk, we,
-            input  [31:0] a, wd,
-            output [31:0] rd);
+module dmem(input  logic            clk, we,
+            input  logic    [31:0] a, wd,
+            output logic    [31:0] rd);
 
   logic  [31:0] RAM[63:0];
 
@@ -251,8 +251,8 @@ module dmem(input         clk, we,
 endmodule
 
 //instruction memory
-module imem(input  [31:0] a,
-            output [31:0] rd);
+module imem(input  logic    [31:0] a,
+            output logic    [31:0] rd);
 
   logic  [31:0] RAM[63:0];
 
@@ -264,6 +264,16 @@ module imem(input  [31:0] a,
   assign rd = RAM[a]; // word aligned
 endmodule
 
-module regfile
-   
+module regfile(input logic      clk, 
+               input            WE3, 
+               input  [4:0]     A1, A2, A3, 
+               input  [31:0]    WD3, 
+               output [31:0]    RD1, RD2);
+    reg [31:0] rf[31:0];
+    always @(posedge clk)
+        if (WE3) rf[A3] <= WD3;	
+
+    assign RD1 = (A1 != 0) ? rf[A1] : 0;
+    assign RD2 = (A2 != 0) ? rf[A2] : 0;
+endmodule
 
