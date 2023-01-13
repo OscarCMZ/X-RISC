@@ -37,9 +37,15 @@ always
     end*/
 
 initial begin
-$dumpfile("XRISC_single_tb.vcd");$dumpvars;
-#100;
-$finish;
+    $dumpfile("XRISC_single_tb.vcd");$dumpvars;
+    #100;
+    $finish;
 end
+
+initial begin // Response monitor
+    $monitor ("t = %3d, clk = %b, reset = %b, WriteData = %b, DataAdr = %b, MemWrite = %b", $time, clk, reset, WriteData, DataAdr, MemWrite);
+end
+
+
 endmodule
 
