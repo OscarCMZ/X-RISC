@@ -1,61 +1,359 @@
 $date
-	Fri Jan 13 11:30:03 2023
+	Sat Jan 14 04:12:14 2023
 $end
 $version
 	Icarus Verilog
 $end
 $timescale
-	1s
+	1ps
 $end
 $scope module XRISC_single_tb $end
-$var reg 1 ! clk $end
-$var reg 1 " reset $end
+$var wire 32 ! WriteData [31:0] $end
+$var wire 1 " MemWrite $end
+$var wire 32 # DataAdr [31:0] $end
+$var reg 1 $ clk $end
+$var reg 1 % reset $end
+$scope module dut $end
+$var wire 1 & Memwrite $end
+$var wire 1 $ clk $end
+$var wire 1 % reset $end
+$var wire 32 ' WriteData [31:0] $end
+$var wire 32 ( ReadData [31:0] $end
+$var wire 32 ) PC [31:0] $end
+$var wire 1 " MemWrite $end
+$var wire 32 * Instr [31:0] $end
+$var wire 32 + DataAdr [31:0] $end
+$scope module XRISC $end
+$var wire 1 $ clk $end
+$var wire 1 % reset $end
+$var wire 1 , Zero $end
+$var wire 32 - WriteData [31:0] $end
+$var wire 2 . ResultSrc [1:0] $end
+$var wire 1 / RegWrite $end
+$var wire 32 0 ReadData [31:0] $end
+$var wire 1 1 PCSrc $end
+$var wire 32 2 PC [31:0] $end
+$var wire 1 " MemWrite $end
+$var wire 1 3 Jump $end
+$var wire 32 4 Instr [31:0] $end
+$var wire 2 5 ImmSrc [1:0] $end
+$var wire 1 6 ALUSrc $end
+$var wire 32 7 ALUResult [31:0] $end
+$var wire 4 8 ALUControl [3:0] $end
+$scope module c $end
+$var wire 1 1 PCSrc $end
+$var wire 3 9 funct3 [2:0] $end
+$var wire 7 : funct7 [6:0] $end
+$var wire 7 ; op [6:0] $end
+$var wire 1 , Zero $end
+$var wire 2 < ResultSrc [1:0] $end
+$var wire 1 / RegWrite $end
+$var wire 1 " MemWrite $end
+$var wire 1 3 Jump $end
+$var wire 2 = ImmSrc [1:0] $end
+$var wire 1 > Branch $end
+$var wire 1 6 ALUSrc $end
+$var wire 2 ? ALUOp [1:0] $end
+$var wire 4 @ ALUControl [3:0] $end
+$scope module ad $end
+$var wire 3 A funct3 [2:0] $end
+$var wire 7 B funct7 [6:0] $end
+$var wire 1 C opb5 $end
+$var wire 2 D ALUOp [1:0] $end
+$var reg 4 E ALUControl [3:0] $end
+$upscope $end
+$scope module md $end
+$var wire 7 F op [6:0] $end
+$var wire 2 G ResultSrc [1:0] $end
+$var wire 1 / RegWrite $end
+$var wire 1 " MemWrite $end
+$var wire 1 3 Jump $end
+$var wire 2 H ImmSrc [1:0] $end
+$var wire 1 > Branch $end
+$var wire 1 6 ALUSrc $end
+$var wire 2 I ALUOp [1:0] $end
+$var reg 11 J controls [10:0] $end
+$upscope $end
+$upscope $end
+$scope module dp $end
+$var wire 4 K ALUControl [3:0] $end
+$var wire 1 6 ALUSrc $end
+$var wire 2 L ImmSrc [1:0] $end
+$var wire 1 1 PCSrc $end
+$var wire 1 / RegWrite $end
+$var wire 2 M ResultSrc [1:0] $end
+$var wire 1 $ clk $end
+$var wire 1 % reset $end
+$var wire 1 , Zero $end
+$var wire 32 N WriteData [31:0] $end
+$var wire 32 O SrcB [31:0] $end
+$var wire 32 P SrcA [31:0] $end
+$var wire 32 Q Result [31:0] $end
+$var wire 32 R ReadData [31:0] $end
+$var wire 32 S PCTarget [31:0] $end
+$var wire 32 T PCPlus4 [31:0] $end
+$var wire 32 U PCNext [31:0] $end
+$var wire 32 V PC [31:0] $end
+$var wire 32 W Instr [31:0] $end
+$var wire 32 X ImmExt [31:0] $end
+$var wire 32 Y ALUResult [31:0] $end
+$scope module alu $end
+$var wire 4 Z ALUControl [3:0] $end
+$var wire 33 [ tmp [32:0] $end
+$var wire 1 , Zero $end
+$var wire 32 \ SrcB [31:0] $end
+$var wire 32 ] SrcA [31:0] $end
+$var wire 1 ^ ALU_Out $end
+$var reg 32 _ ALUResult [31:0] $end
+$upscope $end
+$scope module ext $end
+$var wire 2 ` immsrc [1:0] $end
+$var wire 25 a instr [31:7] $end
+$var reg 32 b immext [31:0] $end
+$upscope $end
+$scope module pcadd4 $end
+$var wire 32 c b [31:0] $end
+$var wire 32 d c [31:0] $end
+$var wire 32 e a [31:0] $end
+$upscope $end
+$scope module pcaddbranch $end
+$var wire 32 f b [31:0] $end
+$var wire 32 g c [31:0] $end
+$var wire 32 h a [31:0] $end
+$upscope $end
+$scope module pcmux $end
+$var wire 32 i d0 [31:0] $end
+$var wire 32 j d1 [31:0] $end
+$var wire 1 1 s $end
+$var wire 32 k y [31:0] $end
+$upscope $end
+$scope module pcreg $end
+$var wire 1 $ clk $end
+$var wire 32 l d [31:0] $end
+$var wire 1 % reset $end
+$var reg 32 m q [31:0] $end
+$upscope $end
+$scope module resultmux $end
+$var wire 32 n d0 [31:0] $end
+$var wire 32 o d2 [31:0] $end
+$var wire 2 p s [1:0] $end
+$var wire 32 q y [31:0] $end
+$var wire 32 r d1 [31:0] $end
+$upscope $end
+$scope module rf $end
+$var wire 5 s A1 [4:0] $end
+$var wire 5 t A2 [4:0] $end
+$var wire 5 u A3 [4:0] $end
+$var wire 32 v WD3 [31:0] $end
+$var wire 1 / WE3 $end
+$var wire 1 $ clk $end
+$var wire 32 w RD2 [31:0] $end
+$var wire 32 x RD1 [31:0] $end
+$upscope $end
+$scope module srcbmux $end
+$var wire 32 y d0 [31:0] $end
+$var wire 32 z d1 [31:0] $end
+$var wire 1 6 s $end
+$var wire 32 { y [31:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module dmem $end
+$var wire 32 | a [31:0] $end
+$var wire 1 $ clk $end
+$var wire 32 } rd [31:0] $end
+$var wire 32 ~ wd [31:0] $end
+$var wire 1 & we $end
+$upscope $end
+$scope module imem $end
+$var wire 32 !" a [31:0] $end
+$var wire 32 "" rd [31:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module resettable_ff_enable $end
+$var wire 1 #" clk $end
+$var wire 32 $" d [31:0] $end
+$var wire 1 %" en $end
+$var wire 1 &" reset $end
+$var reg 32 '" q [31:0] $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
-1"
-1!
+bx '"
+z&"
+z%"
+bz $"
+z#"
+b100000000000100000000000000101 ""
+b0 !"
+b0 ~
+bx }
+bx |
+bx {
+bx z
+b0 y
+bx x
+b0 w
+bx v
+b0 u
+b0 t
+b100 s
+bx r
+bx q
+bx p
+b100 o
+bx n
+b0 m
+bx l
+bx k
+bx j
+b100 i
+b0 h
+bx g
+bx f
+b0 e
+b100 d
+b100 c
+bx b
+b10000000000010000000000 a
+bx `
+bx _
+x^
+bx ]
+bx \
+bx [
+bx Z
+bx Y
+bx X
+b100000000000100000000000000101 W
+b0 V
+bx U
+b100 T
+bx S
+bx R
+bx Q
+bx P
+bx O
+b0 N
+bx M
+bx L
+bx K
+bx J
+bx I
+bx H
+bx G
+b101 F
+bx E
+bx D
+0C
+b10000 B
+b0 A
+bx @
+bx ?
+x>
+bx =
+bx <
+b101 ;
+b10000 :
+b0 9
+bx 8
+bx 7
+x6
+bx 5
+b100000000000100000000000000101 4
+x3
+b0 2
+x1
+bx 0
+x/
+bx .
+b0 -
+x,
+bx +
+b100000000000100000000000000101 *
+b0 )
+bx (
+b0 '
+z&
+1%
+1$
+bx #
+x"
+b0 !
 $end
 #5
-0!
+0$
 #10
-1!
+1$
 #15
-0!
+0$
 #20
-1!
+1$
 #22
-0"
+0%
 #25
-0!
+0$
 #30
-1!
+bx !
+bx '
+bx -
+bx N
+bx w
+bx y
+bx ~
+xC
+bx a
+bx u
+bx t
+bx s
+bx :
+bx B
+bx 9
+bx A
+bx ;
+bx F
+bx *
+bx 4
+bx W
+bx ""
+bx T
+bx d
+bx i
+bx o
+bx )
+bx 2
+bx V
+bx e
+bx h
+bx m
+bx !"
+1$
 #35
-0!
+0$
 #40
-1!
+1$
 #45
-0!
+0$
 #50
-1!
+1$
 #55
-0!
+0$
 #60
-1!
+1$
 #65
-0!
+0$
 #70
-1!
+1$
 #75
-0!
+0$
 #80
-1!
+1$
 #85
-0!
+0$
 #90
-1!
+1$
 #95
-0!
+0$
 #100
-1!

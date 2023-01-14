@@ -12,7 +12,7 @@ module top(input         clk, reset,
 endmodule
 
 //Single-cycle RISC-V processor
-module XRISC_single(input  logic clk,reset,
+module XRISC_single(input  logic        clk,reset,
                     output logic [31:0] PC,
                     input  logic [31:0] Instr,
                     output logic        MemWrite,
@@ -23,7 +23,7 @@ module XRISC_single(input  logic clk,reset,
     logic [1:0] ResultSrc, ImmSrc;
     logic [3:0] ALUControl;
 
-    controller c(Instr[6:0],Instr[14:12],Instr[30], Zero, ResultSrc, MemWrite, PCSrc, ALUSrc, RegWrite, Jump, ImmSrc, ALUControl);
+    controller c(Instr[6:0],Instr[14:12],Instr[31:25], Zero, ResultSrc, MemWrite, PCSrc, ALUSrc, RegWrite, Jump, ImmSrc, ALUControl);
 
     datapath dp(clk, reset, ResultSrc, PCSrc, ALUSrc, RegWrite, ImmSrc, ALUControl, Zero, PC, Instr, ALUResult, WriteData, ReadData);
 
@@ -44,7 +44,7 @@ module controller(  input logic [6:0] op,
     logic Branch;
 
     Main_decoder md(op, ResultSrc,MemWrite, Branch, ALUSrc, RegWrite, Jump, ImmSrc, ALUOp);
-    ALU_decoder ad(op[5], funct3, funct7, ALUOp, ALUControl);
+    ALU_decoder ad(ALUOp, funct3, op[5], funct7, ALUControl);
 
     assign PCSrc = Branch & Zero | Jump;
 endmodule
@@ -117,6 +117,7 @@ module datapath(input  logic        clk,reset,
                 input  logic [3:0]  ALUControl,
                 output logic        Zero,
                 output logic [31:0] PC,
+                input  logic [31:0] Instr,
                 output logic [31:0] ALUResult, WriteData,
                 input  logic [31:0] ReadData);
     logic [31:0] PCNext, PCPlus4, PCTarget;
@@ -185,7 +186,7 @@ module adder(input logic  [31:0] a,
                                 
 endmodule
 
-module extendunit(input logic [31:0] instr,
+module extendunit(input logic [31:7] instr,
                   input logic [1:0]  immsrc,
                   output logic [31:0] immext);
     always@*
@@ -254,7 +255,7 @@ endmodule
 module imem(input  logic    [31:0] a,
             output logic    [31:0] rd);
 
-  logic  [31:0] RAM[63:0];
+  logic[31:0]RAM[0:9];
 
   initial
     begin
@@ -265,11 +266,11 @@ module imem(input  logic    [31:0] a,
 endmodule
 
 module regfile(input logic      clk, 
-               input            WE3, 
-               input  [4:0]     A1, A2, A3, 
-               input  [31:0]    WD3, 
-               output [31:0]    RD1, RD2);
-    reg [31:0] rf[31:0];
+               input logic           WE3, 
+               input logic [4:0]     A1, A2, A3, 
+               input logic [31:0]    WD3, 
+               output logic [31:0]    RD1, RD2);
+    reg [31:0] rf[0:9];
     always @(posedge clk)
         if (WE3) rf[A3] <= WD3;	
 
