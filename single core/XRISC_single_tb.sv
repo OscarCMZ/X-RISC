@@ -20,30 +20,25 @@ initial
 initial begin
     $dumpfile("XRISC_single_tb.vcd");
     $dumpvars;
+end
     
 //generate clock to sequence tests
-        clk <= 1; #5; 
-        clk <=0; #5;
-        clk <= 1; #5; 
-        clk <=0; #5;
-        clk <= 1; #5; 
-        clk <=0; #5;
-        clk <= 1; #5; 
-        clk <=0; #5;
-        clk <= 1; #5; 
-        clk <=0; #5;
-        clk <= 1; #5; 
-        clk <=0; #5;
-        clk <= 1; #5; 
-        clk <=0; #5;
-        clk <= 1; #5; 
-        clk <=0; #5;
-        clk <= 1; #5; 
-        clk <=0; #5;
-        clk <= 1; #5; 
-        clk <=0; #5;
+    always 
+    begin        
+        clk <= 1; #5; clk <=0; #5;
+        clk <= 1; #5; clk <=0; #5;
+        clk <= 1; #5; clk <=0; #5;
+        clk <= 1; #5; clk <=0; #5;
+        clk <= 1; #5; clk <=0; #5;
+        clk <= 1; #5; clk <=0; #5;
+        clk <= 1; #5; clk <=0; #5;
+        clk <= 1; #5; clk <=0; #5;        
+        clk <= 1; #5; clk <=0; #5;
+        clk <= 1; #5; clk <=0; #5;
+        clk <= 1; #5; clk <=0; #5;
         $finish;
-end
+    end
+
 
 
 initial begin // Response monitor

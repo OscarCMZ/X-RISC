@@ -129,7 +129,7 @@ module datapath(input  logic        clk,reset,
 
     //next PC logic
     resettable_ff #(32) pcreg(clk, reset, PCNext, PC);
-    adder       pcadd4(PC,32'd4, PCPlus4);
+    adder       pcadd4(PC,32'd1, PCPlus4);
     adder       pcaddbranch(PC, ImmExt, PCTarget);
     mux2 #(32)  pcmux(PCPlus4, PCTarget, PCSrc, PCNext);
 
@@ -257,7 +257,7 @@ endmodule
 module imem(input  logic    [31:0] a,
             output logic    [31:0] rd);
 
-  logic[31:0]RAM[0:4];
+  logic[31:0]RAM[0:20];
 
   initial
     begin
@@ -272,7 +272,7 @@ module regfile(input logic      clk,
                input logic [4:0]     A1, A2, A3, 
                input logic [31:0]    WD3, 
                output logic [31:0]    RD1, RD2);
-    reg [31:0] rf[0:4];
+    reg [31:0] rf[0:20];
     always @(posedge clk)
         if (WE3) rf[A3] <= WD3;	
 
