@@ -257,7 +257,7 @@ endmodule
 module imem(input  logic    [31:0] a,
             output logic    [31:0] rd);
 
-  logic[31:0]RAM[0:20];
+  logic[31:0]RAM[0:40];
 
   initial
     begin
@@ -272,7 +272,7 @@ module regfile(input logic      clk,
                input logic [4:0]     A1, A2, A3, 
                input logic [31:0]    WD3, 
                output logic [31:0]    RD1, RD2);
-    reg [31:0] rf[0:20];
+    reg [31:0] rf[0:40];
     always @(posedge clk)
         if (WE3) rf[A3] <= WD3;	
 
