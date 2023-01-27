@@ -263,7 +263,7 @@ module imem(input  logic    [31:0] a,
     begin
       $readmemh("riscvtest1.txt",RAM);
     end
-
+ 
   assign rd = RAM[a]; // word aligned
 endmodule
 

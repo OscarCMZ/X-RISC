@@ -21,30 +21,3 @@ FF718393
 00449633
 4044D6B3
 FE21AD23
-
-
-
-//addi x2, x0, 5
-//addi x3, x0, 16
-//addi x7, x3, -9
-//or   x4, x7, x2
-//and  x5, x3, x4
-//add  x5, x5, x4
-//beq  x5, x7, end
-//slt  x4, x3, x4
-//beq  x4, x0, around
-//addi x5, x0, 0
-
-//around: slt  x4, x7, x2
-//add  x7, x4, x5
-//sub  x7, x7, x2
-//sw   x7, 84(x3)
-//lw   x2, 96(x0) 
-//add  x9, x2, x5
-
-//mul  a0, x9, x2
-//div  a1, x9, x2
-//sll  a2, x9, x4
-//sra  a3, x9, x4
-//jal  x3, end
-//end: sw  x2, -6(x3)
