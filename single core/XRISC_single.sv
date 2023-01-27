@@ -1,5 +1,5 @@
 //Top-level Module
-module top(input         clk, reset, 
+module XRISC_FPGA(input         clk, reset, 
            output [31:0] WriteData, DataAdr, 
            output        MemWrite);
 
@@ -95,6 +95,7 @@ module ALU_decoder(input logic  [1:0] ALUOp,
                             7'b0000000:         ALUControl = 4'b0000; // add,addi;
                             7'b0000001:         ALUControl = 4'b1001; // multiply;
                             7'b0100000:         ALUControl = 4'b0001; // R type subtraction;
+									 default:				ALUControl = 4'bx;
                         endcase
                     3'b010:                 ALUControl = 4'b0101; // set less than,slti;
                     3'b110:                 ALUControl = 4'b0011; // or,ori;
@@ -181,6 +182,8 @@ module alu(input logic          [31:0] SrcA,SrcB,  // ALU 32-bit Inputs
                 ALUResult = 32'b1;
                 else
                 ALUResult = 32'b0;
+				default:
+				ALUResult = 32'bx;
 
         endcase
 endmodule 
@@ -267,12 +270,10 @@ module imem(input  logic    [31:0] a,
 
   initial
     begin
-      $readmemh("riscvtest2.txt",RAM);
+      $readmemh("riscvtest1.txt",RAM);
     end
  
-
   assign rd = {RAM[a],RAM[a+1],RAM[a+2],RAM[a+3]}; // word aligned
-
 endmodule
 
 module regfile(input logic      clk, 
