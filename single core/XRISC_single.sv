@@ -270,11 +270,9 @@ module imem(input  logic    [31:0] a,
       $readmemh("riscvtest2.txt",RAM);
     end
  
-<<<<<<< HEAD
+
   assign rd = {RAM[a],RAM[a+1],RAM[a+2],RAM[a+3]}; // word aligned
-=======
-  assign rd = RAM[a]; // word aligned
->>>>>>> 21b00c49c75e0fc9e2982f43a7e7c88afbee8f3d
+
 endmodule
 
 module regfile(input logic      clk, 
