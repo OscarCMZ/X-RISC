@@ -129,7 +129,7 @@ module datapath(input  logic        clk,reset,
 
     //next PC logic
     resettable_ff #(32) pcreg(clk, reset, PCNext, PC);
-    adder       pcadd4(PC,32'd1, PCPlus4);
+    adder       pcadd4(PC,32'd4, PCPlus4);
     adder       pcaddbranch(PC, ImmExt, PCTarget);
     mux2 #(32)  pcmux(PCPlus4, PCTarget, PCSrc, PCNext);
 
@@ -176,7 +176,12 @@ module alu(input logic          [31:0] SrcA,SrcB,  // ALU 32-bit Inputs
                ALUResult = SrcA | SrcB;
             4'b0111: // shift right arithmetic
                ALUResult = SrcA >>> SrcB;       
-            
+            4'b0101:
+                if (SrcA - SrcB < 0)
+                ALUResult = 32'b1;
+                else
+                ALUResult = 32'b0;
+
         endcase
 endmodule 
 
@@ -257,14 +262,15 @@ endmodule
 module imem(input  logic    [31:0] a,
             output logic    [31:0] rd);
 
-  logic[31:0]RAM[0:40];
+  logic[7:0]RAM[0:40];
+  
 
   initial
     begin
-      $readmemh("riscvtest1.txt",RAM);
+      $readmemh("riscvtest2.txt",RAM);
     end
-
-  assign rd = RAM[a]; // word aligned
+ 
+  assign rd = {RAM[a],RAM[a+1],RAM[a+2],RAM[a+3]}; // word aligned
 endmodule
 
 module regfile(input logic      clk, 
@@ -279,4 +285,3 @@ module regfile(input logic      clk,
     assign RD1 = (A1 != 0) ? rf[A1] : 0;
     assign RD2 = (A2 != 0) ? rf[A2] : 0;
 endmodule
-
