@@ -1,5 +1,5 @@
 //Top-level Module
-module XRISC_FPGA(input         clk, reset, 
+module top(input         clk, reset, 
            output [31:0] WriteData, DataAdr, 
            output        MemWrite);
 
@@ -106,7 +106,7 @@ module ALU_decoder(input logic  [1:0] ALUOp,
                             else
                                             ALUControl = 4'b0111; // shift right logical
                     3'b001:                 ALUControl = 4'b1000; // shift left logical
-                    default:                ALUControl = 4'bxxxx; // ???
+                    //default:                ALUControl = 4'bxxxx; // ???
             endcase
         endcase
 endmodule
@@ -182,8 +182,8 @@ module alu(input logic          [31:0] SrcA,SrcB,  // ALU 32-bit Inputs
                 ALUResult = 32'b1;
                 else
                 ALUResult = 32'b0;
-				default:
-				ALUResult = 32'bx;
+			/*default:
+				ALUResult = 32'bx;*/
 
         endcase
 endmodule 
@@ -209,7 +209,7 @@ module extendunit(input logic [31:7] instr,
             2'b10: immext = {{20{instr[31]}}, {instr[7]}, { instr[30:25]}, {instr[11:8]}, 1'b0};
             // J type
             2'b11: immext = {{12{instr[31]}}, {instr[19:12]}, { instr[20]}, {instr[30:21]}, 1'b0};
-            default: immext = 32'bx;
+            //default: immext = 32'bx;
         endcase
 endmodule
 
@@ -265,12 +265,12 @@ endmodule
 module imem(input  logic    [31:0] a,
             output logic    [31:0] rd);
 
-  logic[7:0]RAM[0:40];
+  logic[7:0]RAM[0:300];
   
 
   initial
     begin
-      $readmemh("riscvtest1.txt",RAM);
+      $readmemh("riscvtest2.txt",RAM);
     end
  
   assign rd = {RAM[a],RAM[a+1],RAM[a+2],RAM[a+3]}; // word aligned
