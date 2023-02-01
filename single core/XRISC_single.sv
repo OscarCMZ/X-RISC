@@ -96,6 +96,7 @@ module ALU_decoder(input logic  [1:0] ALUOp,
                             7'b0010011:
                                 case(funct3)
                                 3'b000:             ALUControl = 4'b0000; //addi;
+                                default:            ALUControl = 4'bx;
                                 endcase
                             7'b110011:
                                 case(funct7)
