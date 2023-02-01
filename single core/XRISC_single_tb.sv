@@ -7,6 +7,7 @@ module XRISC_single_tb();
     logic           reset;
     logic   [31:0]  WriteData, DataAdr;
     logic           MemWrite;
+    
 
 top dut(clk, reset, WriteData, DataAdr,MemWrite);
 
@@ -44,6 +45,7 @@ end
         clk <= 1; #5; clk <=0; #5;
         clk <= 1; #5; clk <=0; #5;
         clk <= 1; #5; clk <=0; #5;        
+        clk <= 1; #5; clk <=0; #5;
         clk <= 1; #5; clk <=0; #5;
         clk <= 1; #5; clk <=0; #5;
         clk <= 1; #5; clk <=0; #5;

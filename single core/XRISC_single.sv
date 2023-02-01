@@ -8,7 +8,7 @@ module top(input         clk, reset,
   // instantiate processor and memories
   XRISC_single XRISC(clk, reset, PC, Instr, MemWrite, DataAdr, WriteData, ReadData);
   imem imem(PC, Instr);
-  dmem dmem(clk, Memwrite, DataAdr, WriteData, ReadData);
+  dmem dmem(clk, MemWrite, DataAdr, WriteData, ReadData);
 endmodule
 
 //Single-cycle RISC-V processor
@@ -104,6 +104,7 @@ module ALU_decoder(input logic  [1:0] ALUOp,
                                 7'b0100000:         ALUControl = 4'b0001; // R type subtraction;
                                 default:			ALUControl = 4'bx;
                                 endcase
+                        endcase
                     3'b010:                 
                         
 
@@ -120,7 +121,7 @@ module ALU_decoder(input logic  [1:0] ALUOp,
                                             ALUControl = 4'b0111; // shift right logical
                     3'b001:                 ALUControl = 4'b1000; // shift left logical
                     default:                ALUControl = 4'bxxxx; // ???
-                        endcase
+                        
             endcase
         endcase
 endmodule
@@ -266,13 +267,13 @@ module dmem(input  logic            clk, we,
             input  logic    [31:0] a, wd,
             output logic    [31:0] rd);
 
-  logic  [31:0] RAM[63:0];
-
-  assign rd = RAM[a[31:2]]; // word aligned
+  logic  [31:0] RAM[0:100];
+ 
+  assign rd = RAM[a]; // word aligned
 
   always @(posedge clk)
     if (we)
-      RAM[a[31:2]] <= wd;
+      RAM[a] <= wd;
 endmodule
 
 //instruction memory
@@ -295,7 +296,7 @@ module regfile(input logic      clk,
                input logic [4:0]     A1, A2, A3, 
                input logic [31:0]    WD3, 
                output logic [31:0]    RD1, RD2);
-    reg [31:0] rf[0:40];
+    reg [31:0] rf[0:100];
     always @(posedge clk)
         if (WE3) rf[A3] <= WD3;	
 
