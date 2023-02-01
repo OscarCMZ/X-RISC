@@ -88,23 +88,28 @@ module ALU_decoder(input logic  [1:0] ALUOp,
 
         case(ALUOp)
             2'b00:                      ALUControl = 4'b0000; // performs addition;
-            2'b01:                       ALUControl = 4'b0001; // performs subtraction;
+            2'b01:                      ALUControl = 4'b0001; // performs subtraction;
     
             default: case(funct3)
                     3'b000: 
-                        case(funct7)
-                            7'b0000000:         ALUControl = 4'b0000; // add,addi;
-                            7'b0000001:         ALUControl = 4'b1001; // multiply;
-                            7'b0100000:         ALUControl = 4'b0001; // R type subtraction;
-							//default:				ALUControl = 4'bx;
-                        endcase
-                    3'b010:                 
                         case(op)
-                            7'b0010011:         ALUControl = 4'b0101; // slti;
-                            7'b0110011:         ALUControl = 4'b0101; // set less than;
-                            7'b0000011:         ALUControl = 4'b1111; // load word;
-                            default:            ALUControl = 4'bx;
-                        endcase
+                            7'b0010011:
+                                case(funct3)
+                                3'b000:             ALUControl = 4'b0000; //addi;
+                                endcase
+                            7'b110011:
+                                case(funct7)
+                                7'b0000000:         ALUControl = 4'b0000; // add;
+                                7'b0000001:         ALUControl = 4'b1001; // multiply;
+                                7'b0100000:         ALUControl = 4'b0001; // R type subtraction;
+                                default:			ALUControl = 4'bx;
+                                endcase
+                    3'b010:                 
+                        
+
+                                  ALUControl = 4'b0101; // slti, set less than;
+
+                        
 
                     3'b110:                 ALUControl = 4'b0011; // or,ori;
                     3'b111:                 ALUControl = 4'b0010; // and,andi;
@@ -115,6 +120,7 @@ module ALU_decoder(input logic  [1:0] ALUOp,
                                             ALUControl = 4'b0111; // shift right logical
                     3'b001:                 ALUControl = 4'b1000; // shift left logical
                     default:                ALUControl = 4'bxxxx; // ???
+                        endcase
             endcase
         endcase
 endmodule
@@ -190,10 +196,8 @@ module alu(input logic          [31:0] SrcA,SrcB,  // ALU 32-bit Inputs
                 ALUResult = 32'b1;
                 else
                 ALUResult = 32'b0;
-            4'b1111:
-                ALUResult = SrcA + SrcB ; 
-			/*default:
-				ALUResult = 32'bx;*/
+			default:
+				ALUResult = 32'bx;
 
         endcase
 endmodule 
