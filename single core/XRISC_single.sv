@@ -105,6 +105,7 @@ module ALU_decoder(input logic  [1:0] ALUOp,
                                 7'b0100000:         ALUControl = 4'b0001; // R type subtraction;
                                 default:			ALUControl = 4'bx;
                                 endcase
+                            default:                ALUControl = 4'bx;
                         endcase
                     3'b010:                 
                         
